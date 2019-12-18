@@ -1,34 +1,44 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import TeamList from './components/TeamList';
+import TeamData from './components/TeamData';
+import Form from './components/Form';
 
 function App() {
 
   const [teamMember, setTeamMember] = useState([
-    "Harry Potter",
-    "Luna Lovegood",
-    "Neville Longbottom",
-    "Hermione Granger",
-    "Ron Weasley",
-    "Ginny Weasley",
-    "Fred Weasley",
-    "George Weasley",
-    "Albus Dumbledore ",
-    "Aberforth Dumbledore ",
-    "Dudley Dursley ",
-    "Petunia Dursley ",
-    "Vernon Dursley",
-    "Cornelius Fudge",
-    "Rubeus Hagrid ",
-    "Viktor Krum ",
-    "Bellatrix Lestrange",
-    "Narcissa Malfoy",
-    "Draco Malfoy"
-  ]);
+    {
+      name: "Harry Potter",
+      house: "Gryffindor",
+      broom: true
+    },
+    {
+      name: "Hermione Granger",
+      house: "Gryffindor",
+      broom: true
+    },
+    {
+      name: "Ron Weasley",
+      house: "Gryffindor",
+      broom: true
+    }
+]);
+
+  const addMember = member => {
+    const newMember = {
+      id: Date.now(),
+      name: member.name,
+      house: member.house,
+      broom: member.broom
+    };
+    setTeamMember([...teamMember, newMember]);
+  };
 
   return (
     <div className="App">
-      
+      <h1>Team Members</h1>
+      <TeamList addMember={addMember} />
+      <TeamData teamMember={teamMember} />
     </div>
   );
 }
