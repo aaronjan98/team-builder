@@ -1,26 +1,18 @@
 import React, { useState } from 'react';
-import './App.css';
+import ReactDOM from "react-dom";
+// import './App.css';
 import TeamList from './components/TeamList';
 import TeamData from './components/TeamData';
 import Form from './components/Form';
 
-function App() {
+export default function App() {
 
   const [teamMember, setTeamMember] = useState([
     {
+      id: 1,
       name: "Harry Potter",
       house: "Gryffindor",
-      broom: true
-    },
-    {
-      name: "Hermione Granger",
-      house: "Gryffindor",
-      broom: true
-    },
-    {
-      name: "Ron Weasley",
-      house: "Gryffindor",
-      broom: true
+      wand: "holly"
     }
 ]);
 
@@ -29,7 +21,7 @@ function App() {
       id: Date.now(),
       name: member.name,
       house: member.house,
-      broom: member.broom
+      wand: member.wand
     };
     setTeamMember([...teamMember, newMember]);
   };
@@ -37,10 +29,13 @@ function App() {
   return (
     <div className="App">
       <h1>Team Members</h1>
-      <TeamList addMember={addMember} />
-      <TeamData teamMember={teamMember} />
+      <TeamList teamMember={teamMember} />
+      <TeamData teamMember={teamMember} addMember={addMember}/>
     </div>
   );
 }
 
-export default App;
+const rootElement = document.getElementById(
+  "root"
+);
+ReactDOM.render(<App />, rootElement);
