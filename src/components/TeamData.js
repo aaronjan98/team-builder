@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 const TeamData = props => {
- // console.log("this is our props",props);
- const [teamMember, setTeamMember] = useState({
+
+    const [teamMember, setTeamMember] = useState({
     name: "",
     house: "",
     wand: ""
@@ -13,10 +13,8 @@ const TeamData = props => {
       ...teamMember,
       [e.target.name]: e.target.value,
     });
-    console.log(e.target.name);
-    console.log(e.target.house);
-    console.log(e.target.wand);
   };
+
   const submitForm = e => {
     e.preventDefault();
     props.addMember(teamMember);
@@ -25,8 +23,8 @@ const TeamData = props => {
 
   return (
     <form onSubmit={submitForm}>
-      <label htmlFor="name">Name</label>
-      <input
+      <label className= "inputLabel" htmlFor="name">Name:</label>
+      <input  className= "inputLabel" 
         id="name"
         type="text"
         placeholder="name"
@@ -34,8 +32,8 @@ const TeamData = props => {
         name="name"
         value={teamMember.name}
       />
-      <label htmlFor="house">House</label>
-      <input
+      <label className= "inputLabel"  htmlFor="house">House:</label>
+      <input className= "inputLabel" 
         id="house"
         type="text"
         placeholder="house"
@@ -43,8 +41,8 @@ const TeamData = props => {
         name="house"
         value={teamMember.house}
       />
-      <label htmlFor="wand">Wand</label>
-      <input
+      <label  className= "inputLabel" htmlFor="wand">Wand:</label>
+      <input className= "inputLabel" 
         id="wand"
         type="text"
         placeholder="wand"
@@ -52,7 +50,7 @@ const TeamData = props => {
         name="wand"
         value={teamMember.wand}
       />
-      <button type="submit">Add Team Member</button>
+      <button  className= "inputLabel" type="submit">Add Team Member</button>
     </form>
   );
 }
